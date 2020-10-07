@@ -1,0 +1,41 @@
+.contributorsListWrapper
+    margin: 0
+    padding: 0
+    height: 100vh
+    width: 100vw
+    display: flex
+    flex-direction: column
+    align-items: center
+.statement
+    margin-top: 8vh
+.separator
+    height: 1vh
+    width: 70vw
+    border-top: 2px solid black
+    margin-bottom: 5vh
+.listContainer
+    display: flex
+    align-items: center
+    justify-content: center
+    &__ul
+        display: grid
+        grid-template-columns: repeat(2, 1fr)
+        grid-template-rows: auto
+        align-items: center
+        justify-content: center
+        width: 10vw
+    &__li
+
+        list-style: none
+        width: 37vw
+    &__cardContainer
+        display: flex
+        flex-direction: row
+    &__image
+        min-height: 100%
+.floating
+    z-index: 32
+    position: fixed
+    bottom: 3vh
+    border-radius: 20px
+    border: 1px solid black

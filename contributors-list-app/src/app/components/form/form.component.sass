@@ -1,0 +1,82 @@
+.wrapper
+    height: 100vh
+    width: 100vw
+    display: flex
+    justify-content: center
+    align-content: center
+    flex-direction: column
+.formContainer
+    margin: 0 auto
+    height: 20vh
+    &__githubIcon
+        height: 10vh
+    &__title
+        margin-top: -15vh
+        margin-bottom: 5vh
+        text-align: center
+    &__inputContainer
+        margin-bottom: 4vh
+        max-width: 1000px
+        width: 60vw
+        display: flex
+        animation-name: changeInput
+        animation-duration: 2s
+        animation-fill-mode: forwards
+        opacity: 0%
+        display: inline-flex
+    @keyframes changeInput
+        100%
+            opacity: 100%
+    &__input
+        border-top-right-radius: 0
+        border-bottom-right-radius: 0
+        border-top-left-radius: 0
+        border-bottom-left-radius: 0
+    &__button
+        border-top-left-radius: 0
+        border-bottom-left-radius: 0
+        &--lucky
+            width: 40vw
+.formAnimation
+    display: inline
+    animation-name: formAnimation
+    animation-duration: 2s
+    animation-fill-mode: forwards
+    opacity: 0
+    @keyframes formAnimation
+        100%
+            transform: translateY(-32vh)
+            opacity: 100%
+.reposListContainer
+    &__nResults
+        margin-top: 3.5vh
+        font-weight: bold
+    &__ul
+        max-width: 1000px
+        padding: 0
+    &__li
+        height: 20vh
+        width: 60vw
+        background-color: white
+        list-style: none
+        padding: 2vh
+        margin: 1vh 0
+    &__ownerImage
+        height: 12vh
+        border-radius: 50%
+    &__detailsContainer
+        display: flex
+        margin-top: 1vh
+    &__textContainer
+        display: flex
+        flex-direction: column
+        margin-left: 3vh
+        margin-top: 2vh
+    &__text
+        font-size: 2vh
+.hideInput
+    display: none
+.backButton
+    position: fixed
+    top: 10vh
+    left: 10vh

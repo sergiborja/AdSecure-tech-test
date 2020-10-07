@@ -1,0 +1,124 @@
+<div class="wrapper">
+  <ng-container *ngIf="this.changeView">
+    <button
+      (click)="this.reposFound = undefined; this.changeView = !this.changeView"
+      type="button"
+      class="btn btn-outline-secondary backButton"
+    >
+      Back
+    </button>
+  </ng-container>
+
+  <ng-container *ngIf="this.changeView && !this.reposFound">
+    <div class="spinner spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="!this.changeView">
+    <h1 class="formContainer__title">
+      Welcome to the
+      <img
+        class="formContainer__githubIcon"
+        src="../../../assets/github-icon.png"
+        alt=""
+      />
+      contributors searcher
+    </h1>
+  </ng-container>
+  <div
+    class="formContainer"
+    [ngClass]="this.changeView && this.reposFound ? 'formAnimation' : ''"
+  >
+    <p [ngClass]="this.changeView && !this.reposFound ? 'hideInput' : ''">
+      Search by repository name <br />
+      <small> Search all repositories similar to this name </small>
+    </p>
+    <div
+      [ngClass]="
+        this.changeView && !this.reposFound
+          ? 'hideInput'
+          : 'formContainer__inputContainer'
+      "
+    >
+      <input
+        class="formContainer__input form-control"
+        type="text"
+        placeholder="Introduce the name of the repository here"
+        [(ngModel)]="this.repository"
+      />
+      <button
+        class="formContainer__button btn btn-outline-primary"
+        type="submit"
+        (click)="searchRepositories()"
+      >
+        SEARCH
+      </button>
+    </div>
+    <ng-container *ngIf="this.feedback">
+      <p class="feedback">{{ this.feedback }}</p>
+    </ng-container>
+
+    <ng-container *ngIf="!this.changeView">
+      <p>
+        I'm gonna get lucky <br />
+        <small>
+          You need to write exactly how the repository and owner is named
+        </small>
+      </p>
+      <div class="formContainer__inputContainer">
+        <input
+          class="formContainer__input form-control"
+          type="text"
+          placeholder="Repo name.."
+          [(ngModel)]="this.luckyRepo"
+        />
+        <input
+          class="formContainer__input form-control"
+          type="text"
+          placeholder="Owner name.."
+          [(ngModel)]="this.owner"
+        />
+        <button
+          class="formContainer__button--lucky formContainer__button btn btn-outline-primary"
+          (click)="
+            this.router.navigate([
+              'contributors/repo:' + this.luckyRepo + '/owner:' + this.owner
+            ])
+          "
+        >
+          LUCKY SEARCH
+        </button>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="this.reposFound">
+      <div class="reposListContainer">
+        <p class="reposListContainer___nResults">
+          Repositories found: {{ reposFound.length }}
+        </p>
+        <ul class="reposListContainer__ul">
+          <li class="reposListContainer__li" *ngFor="let repo of reposFound">
+            <a
+              class="reposListContainer__repoLink"
+              href="{{
+                '/contributors/repo:' + repo.name + '/owner:' + repo.owner.login
+              }}"
+              >{{ repo.owner.login }} / {{ repo.name }}</a
+            >
+            <div class="reposListContainer__detailsContainer">
+              <img
+                class="reposListContainer__ownerImage"
+                src="{{ repo.owner.avatar_url }}"
+              />
+              <div class="reposListContainer__textContainer">
+                <p class="reposListContainer__text">
+                  Description: {{ repo.description }}
+                </p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </ng-container>
+  </div>
+</div>

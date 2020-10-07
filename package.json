@@ -1,0 +1,21 @@
+{
+  "name": "AdSecure-technical-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "highest-occurrence": "cd highest-occurrence; node index.js",
+    "max-sub-array-sum": "cd maximum-sub-array-sum; node index.js",
+    "average-pair": "cd average-pair; node index.js",
+    "test-occurrence": "cd highest-occurrence; mocha || true",
+    "test-max-sum": "cd maximum-sub-array-sum; mocha || true",
+    "test-average-pair": "cd average-pair; mocha || true"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^8.1.3"
+  }
+}
